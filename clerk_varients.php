@@ -88,7 +88,7 @@
 <body>
     <div class="video">
         <video autoplay loop muted playsinline>
-            <source src="img\clerk_varients_animation.mp4" type="video/mp4">
+            <source src="img\optimized\clerk_animation_optimized.mp4" type="video/mp4">
         
         </video>
     </div>

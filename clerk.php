@@ -312,7 +312,7 @@
         
         <div class="video">
             <video autoplay loop muted playsinline>
-                <source src="clerk_animation.mp4" type="video/mp4">
+                <source src="img\optimized\clerk_animation_optimized.mp4" type="video/mp4">
             
             </video>
         </div>

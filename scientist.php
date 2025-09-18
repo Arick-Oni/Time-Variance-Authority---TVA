@@ -87,7 +87,7 @@
 <body>
     <div class="video">
         <video autoplay loop muted playsinline>
-            <source src="img\Scientist.mp4" type="video/mp4">       
+            <source src="img\optimized\Scientist_optimized.mp4" type="video/mp4">       
         </video>
     </div>
     <div class="navbar">
