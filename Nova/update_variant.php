@@ -3,7 +3,6 @@
 <?php
     include("config/db_connect.php");
     session_start();
-    $conn = mysqli_connect("localhost", "root", "", "final");
     $ID=$_POST['idd'];
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $selectedOption = $_POST['VID']; 

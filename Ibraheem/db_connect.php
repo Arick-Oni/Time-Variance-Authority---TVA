@@ -1,4 +1,5 @@
 <?php
+
 //connection to database
 // More robust environment detection
 $is_local = (
@@ -10,17 +11,25 @@ $is_local = (
 
 if ($is_local) {
     // Local development environment (XAMPP)
-    $con = mysqli_connect('localhost', 'root', '', 'final');
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "final";
 } else {
     // Production environment (InfinityFree)
-    $con = mysqli_connect('sql205.infinityfree.com', 'if0_39973795', 'wETWvFXzRjMY4', 'if0_39973795_final');
+    $servername = "sql205.infinityfree.com";
+    $username = "if0_39973795";
+    $password = "wETWvFXzRjMY4";
+    $dbname = "if0_39973795_final";
 }
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
 // Enhanced error handling
-if(!$con){
-    $error_msg = "Database Connection Failed: " . mysqli_connect_error();
+if ($conn->connect_error) {
+    $error_msg = "Database Connection Failed: " . $conn->connect_error;
     // Log the error (in production, you might want to log to a file instead of displaying)
     error_log($error_msg);
     die($error_msg);
 }
- ?>
+?>

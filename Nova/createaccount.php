@@ -36,37 +36,24 @@ if (isset($_POST["submit"])) {
         if (mysqli_query($conn, $sql)) {
             
             $last_id = mysqli_insert_id($conn);
-            ?>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Successful</title>
-                <link rel="preconnect" href="https://fonts.googleapis.com">
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-                <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            </head>
-            <body>
-                <div class="card center">
-                    <div class="card-content orange">
-                        Congratulations!! Your ID is <?php echo $last_id; ?>
-                    </div>
-                </div>
-            </body>
-            </html>
-            <?php
-            header("refresh:5; url=index.php");
-            exit();
-                } else {
-                    echo "Query error: " . mysqli_error($conn);
-                }
-        } else {
             
+            $sql21="INSERT INTO `$Type`(`ID`) VALUES('$last_id')";
+            $result21 = mysqli_query($conn, $sql21);
+            
+            // Check if second query failed
+            if (!$result21) {
+                echo "Error inserting into $Type table: " . mysqli_error($conn);
+                exit();
+            }
+            
+            // Set success flag and store the ID for popup display
+            $success = true;
+            $employee_id = $last_id;
+        } else {
+            echo "Query error: " . mysqli_error($conn);
         }
     }
+}
 
 
 ?>
@@ -117,9 +104,31 @@ if (isset($_POST["submit"])) {
     <!-- <a href="createaccount.php" class="btn mybtn3 brand z-depth-0">New User? Create an account!</a> -->
 </section>
 
+<!-- Success Modal -->
+<div id="successModal" class="modal">
+    <div class="modal-content center">
+        <h4 class="green-text">🎉 Congratulations! 🎉</h4>
+        <h5>Your account has been created successfully!</h5>
+        <div class="card-panel orange lighten-4">
+            <h6><strong>Your Employee ID is: <span id="employeeId" class="orange-text text-darken-2"></span></strong></h6>
+            <p><em>Please remember this ID for future logins.</em></p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="log_in.php" class="modal-close waves-effect waves-green btn green">Go to Login Page</a>
+        <a href="#!" class="modal-close waves-effect waves-light btn grey">Stay Here</a>
+    </div>
+</div>
+
 <?php include("templates/footer.php"); ?>
 <script>
         $(document).ready(function(){
             $('.modal').modal();
+            
+            <?php if (isset($success) && $success && isset($employee_id)): ?>
+            // Show success modal with employee ID
+            $('#employeeId').text('<?php echo $employee_id; ?>');
+            $('#successModal').modal('open');
+            <?php endif; ?>
         });</script>
 

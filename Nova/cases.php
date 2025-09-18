@@ -43,10 +43,6 @@ include("config/db_connect.php");
     </thead>
     <tbody>
         <?php
-         $conn = mysqli_connect("localhost", "root", "", "final");
-         if ($conn->connect_error) {
-            die("Connection failed:" . $conn->connect_error);
-             }
         $Jname = $_SESSION['name'];
         $sql = "SELECT cases.Number as CNumber,cases.Analyst_ID AS A_ID,cases.variant_id AS V_ID,cases.Num_of_Trials AS NTr, trial.Verdict AS Verdict, trial.Court_Number AS CNo FROM cases INNER JOIN trial ON trial.Case_Number=cases.Number WHERE cases.Status= 'Closed'";
         $result = $conn->query($sql);

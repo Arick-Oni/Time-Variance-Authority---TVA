@@ -1,4 +1,5 @@
 <?php include 'DESIGNPAGE.html'; ?>
+<?php include("config/db_connect.php"); ?>
 <div class="UngaBunga" style="margin-top: 200px;">
   <div style="margin-top: 80px; margin-left: 100px; margin-right: 100px;">
     <table id="variant" class="table table-bordered table-striped caption-top">
@@ -15,10 +16,6 @@
       </thead>
       <tbody>
         <?php
-        $conn = mysqli_connect("localhost", "root", "", "final");
-        if ($conn->connect_error) {
-          die("Connection failed:" . $conn->connect_error);
-        }
         $sql = "SELECT variants.Name as VName, variants.ID AS VID, variants.Timeline_ID AS TID, cases.Status AS Cstat, variants.PruneOrReset AS settlement, variants.Hunter_ID AS HID FROM cases INNER JOIN variants ON cases.variant_id = variants.ID";
         $result = $conn->query($sql);
 

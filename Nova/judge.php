@@ -42,10 +42,6 @@ include("config/db_connect.php");
             </thead>
             <tbody>
                 <?php
-                $conn = mysqli_connect("localhost", "root", "", "final");
-                if ($conn->connect_error) {
-                    die("Connection failed:" . $conn->connect_error);
-                }
                 $sql = "SELECT cases.Number as CNumber,cases.Analyst_ID AS A_ID,cases.variant_id AS V_ID,cases.Num_of_Trials AS NTr, variants.Nexus_Event_Cause AS NEX  FROM cases INNER JOIN variants ON cases.variant_id = variants.ID  WHERE cases.Status= 'Pending'";
                 $result = $conn->query($sql);
 
@@ -77,11 +73,6 @@ include("config/db_connect.php");
           
           
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "final");
-            if ($conn->connect_error) {
-                die("Connection failed:" . $conn->connect_error);
-            }
-
             if (isset($_GET['Case_Detail'])) {
               $filter_value = $_GET['Case_Detail'];
 

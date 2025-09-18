@@ -45,7 +45,6 @@ if (isset($_POST['submit']))
     $Timeline_ID=$_POST['timelineID'];
     $Locker_Num=$_POST['Locker_Num'];
     $Emplyee_ID=$_POST['HunterID'];
-    $conn= mysqli_connect("localhost", "root","","tva_final");
     $res=mysqli_query($conn,"INSERT into specimen values(NULL,'$Timeline_ID','$Locker_Num','$Emplyee_ID')");
     if($res)
     {
@@ -74,10 +73,6 @@ if (isset($_POST['submit']))
   </thead>
   <tbody>
     <?php
-    $conn= mysqli_connect("localhost", "root","","tva_final");
-    if ($conn -> connect_error) {
-      die("Connection failed:".$conn -> connect_error);
-    }
     $sql = "SELECT Record_ID,Timeline_ID,Locker_Num,Emplyee_ID from specimen";
     $result= $conn-> query($sql);
 

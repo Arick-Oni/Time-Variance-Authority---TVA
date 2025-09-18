@@ -1,0 +1,32 @@
+# Exclude zip files
+TVA.zip
+*.zip
+
+# Common files to ignore
+*.log
+*.tmp
+*.temp
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# PHP specific
+vendor/
+composer.lock
+
+# Database files
+*.sql.backup
+*.db.backup
