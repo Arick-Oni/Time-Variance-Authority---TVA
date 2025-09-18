@@ -1,0 +1,104 @@
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #931c1f;
+    color: white; 
+}
+.actions {
+    text-align: right;
+}
+.scrollable-table {
+    height: 300px; 
+    overflow: auto;
+}
+table {
+    color: black; 
+    font-size: 20px;
+}
+table tr:hover {
+    background-color: #FF9A38; 
+}
+.tableButton {
+    width: 150px;
+    height: 25px;
+    transition: background-color 0.3s ease;
+    border-color: #931c1f;
+    border-radius: 5px;
+}
+.tableButton:hover {
+    background-color: #931c1f 
+}
+.selectButton {
+    border-width: 6px;
+    background-color: #FF9A38;
+    border-color: #931c1f;
+    border-radius: 10px;
+    font-size: 30px;
+    padding: 10px 24px;
+}
+
+.selectButton:hover {
+    background-color: #931c1f;
+    color: white; 
+}
+.weapon-name {
+    font-size: 35px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: #931c1f;
+    font-weight: bold;
+}
+
+.serial-number {
+    font-size: 25px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: black;
+    font-weight: bold;
+}
+
+.health {
+    font-size: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: black;
+    font-weight: bold;
+}
+
+.armory-id {
+    font-size: 20px;
+    position: relative;
+    top: 0;
+    left: 0;
+    color: black;
+    font-weight: bold;
+}
+.dropdown-content-div {
+    border-radius: 10px;
+    margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    width: 45%;
+}
+.welcome-text {
+    margin-top: 15px;
+    font-size: 50px;
+    text-align: left;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+.centered-content {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}

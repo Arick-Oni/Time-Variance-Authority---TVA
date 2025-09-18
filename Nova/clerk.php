@@ -1,0 +1,364 @@
+<?php
+    include("config/db_connect.php");
+    session_start();
+
+    
+    if ($_SESSION['loggedin'] && $_SESSION['ID'] && $_SESSION['userType'] === 'Clerk') {
+        
+        $userID = $_SESSION['ID'];
+        
+    } else {
+        
+        header('Location: log_in.php');
+        exit();
+    }
+    if($_SESSION['ID']){
+        $ID=mysqli_real_escape_string($conn, $_SESSION['ID']);
+        $sql="SELECT * FROM employee WHERE ID='$ID'";
+        $result=mysqli_query($conn,$sql);
+        $row=mysqli_fetch_assoc($result);
+        mysqli_free_result($result);
+	    mysqli_close($conn);
+       
+    }
+   
+
+
+?>
+<!DOCTYPE html>
+<html>
+    <head> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <style>
+			*{
+				font-family: "Nova Square";
+			}
+            body{
+                background-image: url("clerk.jpg");
+                background-size:cover;
+                background-repeat: no-repeat;
+            }
+            .navbar {
+			background-color: rgba(255, 171, 64, .65);
+
+			
+			background-image: linear-gradient(to right, rgba(200, 200, 200, 0.7), rgba(255, 255,255, 0));
+			margin-right: 1340px;
+			margin-left: 50px;
+			margin-top: 0px;
+			border: 1px;
+			border-radius: 0 0 50px 50px;
+			height: 80px;
+			align-content: center;
+			/* backdrop-filter: blur(10px); */
+			/* padding-right:  100px; */
+			transition: 1s;
+			display: flex;
+			align-items: center;
+		}
+		.navbar:hover {
+			background-color: rgba(255, 171, 64, .9);
+            /* margin-right: 50px; */
+			
+		}
+		.TVAdiv {
+			height: 80px;
+			width: 80px;
+			margin-left: 10px;
+			padding-left: 10px;
+			transition: height, width .35s;
+			border: 10px;
+			border-color: red;
+			display: inline-block;
+		}
+		.TVAdiv:hover {
+			height: 84px;
+			width: 84px;
+			border: 5px;
+			border-color: #F26722;
+		}
+		.TVA {
+			background-size: cover;
+			height: 150px;
+			margin-left: 0px;
+		}
+		.about {
+			font-family: 'Nova Square', sans-serif;
+			color: #F26722;
+			font-weight: 600;
+			
+
+			font-size: 22px;
+			margin-left: 30px;
+			margin-top: 10px;
+			transition: font-size .35s, color .8s;
+		
+		}
+		.wiki {
+			font-family: 'Nova Square', sans-serif;
+			color: #F26722;
+			/* font-weight: bold; */
+			font-size: 22px;
+			font-weight: 600;
+			margin-left: 15px;
+			margin-top: 10px;
+			transition: font-size .35s, color .8s;
+		
+		}
+		.about:hover{
+			font-size: 23px;
+			color: #F26722;
+			color: hsl(26, 90%, 50%);
+		}
+		.wiki:hover{
+			font-size: 23px;
+			color: #F26722;
+			color: hsl(26, 90%, 50%);
+		}
+		
+		
+		.aboutusbtn{
+			margin-left: 40px;
+			background-color: transparent;
+
+		}
+		.btn{
+			background-color: #F26722;
+			font-family: "Nova Square";
+			border-radius: 10px;
+			transition: .7s;
+		}
+		
+		.btn:hover{
+			color: #F26722;
+			background-color: white;
+		}
+		.mybtn{
+			background-color: #F26722;
+			position: absolute;
+			left: 60.5%;
+			top: 35%; 
+			
+			font-family: "Nova Square";
+			border-radius: 10px;
+			transition: .7s;
+            width: 150px;
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+		}
+        .mybtn2{
+			background-color: #F26722;
+			position: absolute;
+			left: 60.5%;
+			top: 45%; 
+			
+			font-family: "Nova Square";
+			border-radius: 10px;
+			transition: .7s;
+            width: 150px;
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            
+		}
+        .mybtn3{
+			background-color: #F26722;
+			position: absolute;
+			left: 60.5%;
+			top: 55%; 
+			
+			font-family: "Nova Square";
+			border-radius: 10px;
+			transition: .7s;
+            width: 150px;
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            
+		}
+        .mybtn4{
+			background-color: #FF3300;
+			position: absolute;
+			left: 60.5%;
+			top: 65%; 
+			
+			font-family: "Nova Square";
+			border-radius: 10px;
+			transition: .7s;
+            width: 150px;
+            height: 50px;
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            
+		}
+		
+		.mybtn:hover{
+			color: #F26722;
+			background-color: white;
+		}
+        .two{
+            background-color: rgba(255, 171, 64, .45);
+			/* background-image: linear-gradient(to right, rgba(200, 200, 200, 0.7), rgba(255, 255,255, 0)); */
+            margin-right: 700px;
+			margin-left: 240px;
+			margin-top: 60px;
+            height: 500px;
+            border-radius: 50px 50px 50px 50px;
+            backdrop-filter: blur(30px);
+        }
+        .imagee{
+			display: inline;
+			height: 200px;
+			width: 200px;
+			border-radius: 100px;
+			margin-left: 20px;
+			margin-top: 0px;
+			
+		}
+        .orangee{
+            font-family: "Nova Square";
+            color: #FF3300;
+        }
+        .head{
+            font-size: 21px;
+            font-weight: 500;
+        }
+        /* .background-clip{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			
+			z-index: -1;
+		}
+		.video{
+			width: 100%;
+			height: 100vh;
+			background-color: #ccc;
+			display: inline;
+			background-color: rgba(0,0,0,0.4)
+		}
+         */
+        body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+    .video {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+	::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #F26722;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF3300;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!-- <div class="container video">
+        <video autoplay loop muted playsinline class="background-clip">
+            <source src="clerk_animation.mp4" type="video/mp4">
+        </video> -->
+        <div class="video">
+            <video autoplay loop muted playsinline>
+                <source src="clerk_animation.mp4" type="video/mp4">
+            
+            </video>
+        </div>
+            <div class="navbar">
+                <a href="clerk.php" class="TVAdiv"><img src="1701439279944.png" class="TVAdiv"></a>
+                
+                
+            </div>
+			
+            <ul id="nav-mobile" class='right '>
+                        <li><a href="clerk_varients.php" class="btn mybtn  brand z-depth-0" >Varient Info<i class="material-icons" style="margin-left: 1px;">info</i></a> </li>
+            </ul>
+            <ul id="nav-mobile" class='right '>
+                    <li><a href="#" class="btn mybtn2 sidenav-trigger brand z-depth-0" data-target="mobile-links">Devices<i class="material-icons" style="margin-left: 5px;">devices</i></a> </li>
+            </ul>
+            <ul id="nav-mobile" class='right '>
+                    <li><a href="clerk_specimen.php" class="btn mybtn3 brand z-depth-0">Specimen<i class="material-icons" style="margin-left: 5px;">category</i></a> </li>
+            </ul>
+            <ul id="nav-mobile" class='right '>
+                    <li><a href="index.php" class="btn mybtn4 brand z-depth-0">Log Out<i class="material-icons" style="margin-left: 5px;">exit_to_app</i></a> </li>
+            </ul>
+			<div class="sidenav" style="height: 500px; width: 400px; margin-top:135px; border-radius: 75px 0px 0px 75px; background-color: rgba(255, 171, 64, 1);" id="mobile-links">
+			<ul class="center"><?php echo $row['Name'] ?>'s Device List</ul>	
+				<div class="collection center" style="height: 225px; width: 350px; overflow:auto; margin-left: 50px; font-family: 'Nova Square';  border-radius: 100px 0px 0px 100px;">
+					
+					<div class="collection-item"><span class='title'>1</span> <a href="#" class="icon" style="display: inline;"> <i class="material-icons" >add</i></a> </div>
+					<li class="collection-item">2</li> 
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+					<li class="collection-item">3</li>
+			</div>
+			</div>
+
+			<div class="navbar two" style="height: 500px; width: 600px; backdrop-filter: blur(20px); opacity: 0.9;">
+                <div class="imagee">
+                    <img class="imagee" src="img\tumblr_c585ed9b343456e488c182a56c3aae73_e2209600_540.webp">
+                </div>     
+                
+                <div class="container  center">
+                    <h2 class="orangee"><?php echo $row['Name'] ?></h2>
+                    <?php foreach($row as $key => $value){ 
+						if (!($key==='Name' or $key=== 'Password')) {?>
+							<h6 class="orangee head"><?php echo "$key: $value" ?></h6>
+                    	<?php  } 
+					}?>
+                </div>
+
+			
+            </div>
+	<script>
+		$(document).ready(function(){
+			$('.sidenav').sidenav({ edge: 'right' });
+		})
+    </script>   
+    </body>
+
+</html>

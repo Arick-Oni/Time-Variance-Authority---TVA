@@ -1,0 +1,124 @@
+
+.logo{
+    width: 6%;
+    height:6%;
+}
+
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    overflow: hidden; /* Prevent scrolling */
+    /*height: 1500px;*/
+    overflow-y: scroll;
+    min-height: 100vh;
+  }
+
+.navbar {
+    position: fixed;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* Ensure the navbar appears above other elements */
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+  }
+ 
+
+
+.tablee { 
+    text-align: center;
+    position: Auto;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    } 
+
+
+  .btn-group {
+      color: black;
+      border-color: black;
+    }
+
+.wrap {
+  height: 40rem;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  backdrop-filter: blur(5px);
+  /* background-color: rgba(255, 255, 255, 0.3); */
+}
+
+.formm {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 165, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Black shadow */
+  backdrop-filter: blur(5px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+
+.inputfield{
+  width: 100%;
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  flex-direction: row;
+
+}
+.inputfield label{
+
+  width: 30%;
+  text-align: center;
+}
+.custom_select{
+  margin-right:20px;
+  width: 70%;
+
+}
+#user_type {
+  width: 100%;
+}
+#verdictbox{
+width: 72%;
+height: 100%;
+margin-right: 20px;
+}
+#verdictline{
+  height: 25%;
+
+} 
+.submitbuttonn{
+
+  width:40%;
+  background-color: rgb(58, 55, 55);
+  color:azure;
+  margin: 5px;
+  border-radius: 20px;
+
+}
+.submitbuttonnn{
+  width:40%;
+  background-color: rgb(58, 55, 55);
+  color:azure;
+  margin: 5px;
+  border-radius: 20px;
+  text-align: center;
+  border: 2px solid rgb(29, 27, 27);
+  text-decoration: none;
+
+}
+
+.tiredbro{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,45 @@
+
+.logo{
+    width: 6%;
+    height:6%;
+}
+
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    overflow: hidden; /* Prevent scrolling */
+  }
+.navbar {
+    position: absolute;
+    width: 100%;
+    z-index: 1; /* Ensure the navbar appears above other elements */
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3)
+  }
+  .body {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Ensure the image is below the navbar */
+  }
+
+.text-center {
+    position: auto;
+    z-index: 1;
+    color: black;
+    
+
+}
+.tablee { 
+    position: Auto;
+    width: 80%;
+    margin-top: 100px; 
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3);
+    }
+
+
